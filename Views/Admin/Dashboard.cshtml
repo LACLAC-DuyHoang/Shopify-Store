@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5>Tổng sản phẩm</h5>
+                <h3>@ViewBag.TotalProducts</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5>Tổng đơn hàng</h5>
+                <h3>@ViewBag.TotalOrders</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning">
+            <div class="]s card-body">
+                <h5>Doanh thu</h5>
+                <h3>@ViewBag.TotalRevenue.ToString("N0") ₫</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-danger">
+            <div class="card-body">
+                <h5>Chờ xử lý</h5>
+                <h3>@ViewBag.PendingOrders</h3>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@model List<SHOPIFY1.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Giỏ hàng";
+}
+
+<h2 class="text-center mb-4 fw-bold">Giỏ hàng của bạn</h2>
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5">
+        <p class="text-muted fs-4">Giỏ hàng trống</p>
+        <a href="/" class="btn btn-primary">Tiếp tục mua sắm</a>
+    </div>
+}
+else
+{
+    <form method="post" asp-action="Update" class="mb-3">
+        <table class="table table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/images/@Model[i].HinhAnh" width="60" class="rounded" />
+                            <input type="hidden" name="[@i].MaSp" value="@Model[i].MaSp" />
+                        </td>
+                        <td class="text-start">@Model[i].TenSp</td>
+                        <td>@Model[i].Gia.ToString("N0") ₫</td>
+                        <td>
+                            <input type="number" name="[@i].SoLuong" value="@Model[i].SoLuong"
+                                   min="1" max="99" class="form-control w-75 d-inline" />
+                        </td>
+                        <td class="text-danger fw-bold">@Model[i].ThanhTien.ToString("N0") ₫</td>
+                        <td>
+                            <a asp-action="Remove" asp-route-id="@Model[i].MaSp"
+                               class="btn btn-sm btn-outline-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="text-end mb-3">
+            <button type="submit" class="btn btn-outline-primary me-2">Cập nhật giỏ</button>
+            <a asp-action="Clear" class="btn btn-outline-secondary me-2">Xóa tất cả</a>
+        </div>
+    </form>
+
+    <div class="card p-3 bg-light">
+        <h4 class="text-end">
+            Tổng cộng: <strong class="text-danger">@Model.Sum(x => x.ThanhTien).ToString("N0") ₫</strong>
+        </h4>
+        <div class="text-end">
+            <a href="/" class="btn btn-secondary me-2">Tiếp tục mua</a>
+            <a asp-controller="Checkout" asp-action="Index" class="btn btn-success">Thanh toán</a>
+        </div>
+    </div>
+}

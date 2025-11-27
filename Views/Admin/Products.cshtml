@@ -1,0 +1,45 @@
+﻿@model List<SanPham>
+@{
+    ViewData["Title"] = "Quản lý sản phẩm";
+    Layout = "_LayoutAdmin";
+}
+
+<h3>Quản lý sản phẩm</h3>
+
+<form method="get" class="mb-3">
+    <div class="input-group w-50">
+        <input type="text" name="search" class="form-control" placeholder="Tìm sản phẩm..." value="@ViewBag.Search" />
+        <button type="submit" class="btn btn-primary">Tìm</button>
+    </div>
+</form>
+
+<a asp-action="CreateProduct" class="btn btn-success mb-3">Thêm sản phẩm</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Hình</th>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Tồn</th>
+            <th>Danh mục</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td><img src="@p.HinhAnh" width="50" /></td>
+                <td>@p.TenSp</td>
+                <td>@p.Gia.ToString("N0")</td>
+                <td>@p.SoLuongTon</td>
+                <td>@p.MaDmNavigation?.TenDm</td>
+                <td>
+                    <a asp-action="EditProduct" asp-route-id="@p.MaSp" class="btn btn-sm btn-warning">Sửa</a>
+                    <a asp-action="DeleteProduct" asp-route-id="@p.MaSp" class="btn btn-sm btn-danger" onclick="return confirm('Xóa?')">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

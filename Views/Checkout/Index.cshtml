@@ -1,0 +1,75 @@
+﻿@model List<SHOPIFY1.Models.CartItem>
+
+@{
+    var maGiamGias = ViewBag.MaGiamGias as List<SHOPIFY1.Models.MaGiamGium>;
+    decimal tongTien = Model.Sum(x => x.ThanhTien);
+}
+
+<h2 class="mb-4">Thanh toán</h2>
+
+<form method="post" asp-action="PlaceOrder">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card p-3 mb-3">
+                <h5>Thông tin giao hàng</h5>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ</label>
+                    <input name="diaChiGiao" class="form-control" required placeholder="Số nhà, đường, phường..." />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phương thức thanh toán</label>
+                    <select name="phuongThucThanhToan" class="form-select" required>
+                        <option value="COD">Thanh toán khi nhận hàng (COD)</option>
+                        <option value="Bank">Chuyển khoản ngân hàng</option>
+                    </select>
+                </div>
+            </div>
+
+            @if (maGiamGias != null && maGiamGias.Any())
+            {
+                <div class="card p-3">
+                    <h5>Mã giảm giá</h5>
+                    <div class="input-group">
+                        <select name="maCode" class="form-select">
+                            <option value="">-- Chọn mã giảm giá --</option>
+                            @foreach (var m in maGiamGias)
+                            {
+                                <option value="@m.MaCode">@m.MaCode - Giảm @m.PhanTramGiam%</option>
+                            }
+                        </select>
+                        <button type="button" class="btn btn-outline-primary" onclick="applyCoupon()">Áp dụng</button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-5">
+            <div class="card p-3">
+                <h5>Đơn hàng (@Model.Count sản phẩm)</h5>
+                <table class="table table-sm">
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.TenSp x @item.SoLuong</td>
+                                <td class="text-end">@item.ThanhTien.ToString("N0") ₫</td>
+                            </tr>
+                        }
+                        <tr class="border-top">
+                            <td><strong>Tổng cộng</strong></td>
+                            <td class="text-end"><strong>@tongTien.ToString("N0") ₫</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-success w-100">Xác nhận đặt hàng</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function applyCoupon() {
+        alert("Áp dụng mã giảm giá thành công!");
+        // Có thể gọi AJAX để tính lại tổng tiền
+    }
+</script>

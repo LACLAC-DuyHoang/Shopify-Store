@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SHOPIFY1.Models.SanPham>
+
+@{
+    ViewData["Title"] = "Trang chủ";
+    var categories = ViewBag.Categories as List<SHOPIFY1.Models.DanhMuc>;
+}
+
+<!-- 🏷 Tiêu đề danh mục -->
+<h2 class="mb-4 text-center fw-bold">Danh mục sản phẩm</h2>
+
+<!-- 🔗 Danh sách danh mục -->
+<div class="d-flex flex-wrap justify-content-center mb-5">
+    @if (categories != null && categories.Any())
+    {
+        foreach (var cat in categories)
+        {
+            <!-- ✅ Dùng TagHelper để link chính xác đến Product/ByCategory -->
+            <a asp-controller="Product"
+               asp-action="ByCategory"
+               asp-route-id="@cat.MaDm"
+               class="btn btn-outline-primary m-1">
+                @cat.TenDm
+            </a>
+        }
+    }
+    else
+    {
+        <p>Không có danh mục nào.</p>
+    }
+</div>
+
+<!-- 🛍 Sản phẩm nổi bật -->
+<h2 class="mb-4 text-center fw-bold">Sản phẩm nổi bật</h2>
+<div class="row">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var sp in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <img src="~/images/@sp.HinhAnh"
+                         class="card-img-top"
+                         alt="@sp.TenSp"
+                         style="height:200px; object-fit:cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@sp.TenSp</h5>
+                        <p class="text-danger fw-bold">@string.Format("{0:N0} ₫", sp.Gia)</p>
+
+                        <a asp-controller="Product"
+                           asp-action="Details"
+                           asp-route-id="@sp.MaSp"
+                           class="btn btn-sm btn-primary">
+                            Xem chi tiết
+                        </a>
+
+                        <a asp-controller="Cart"
+                           asp-action="Add"
+                           asp-route-id="@sp.MaSp"
+                           class="btn btn-sm btn-success ms-2">
+                            Thêm vào giỏ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="text-center text-muted">Chưa có sản phẩm nào để hiển thị.</p>
+    }
+</div>

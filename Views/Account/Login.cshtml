@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg p-4" style="width: 400px; border-radius: 10px;">
+        <h3 class="text-center mb-4 fw-bold text-warning"><i class="bi bi-person-circle"></i> Đăng nhập</h3>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">@TempData["Success"]</div>
+        }
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Nhập email" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Mật khẩu</label>
+                <input type="password" name="matkhau" class="form-control" placeholder="Nhập mật khẩu" required />
+            </div>
+
+            <button type="submit" class="btn btn-custom w-100">Đăng nhập</button>
+
+            <div class="text-center mt-3">
+                <span>Chưa có tài khoản? </span>
+                <a href="/Account/Register" class="text-decoration-none text-warning fw-semibold">Đăng ký ngay</a>
+            </div>
+        </form>
+    </div>
+</div> 

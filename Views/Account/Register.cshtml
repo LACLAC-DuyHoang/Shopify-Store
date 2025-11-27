@@ -1,0 +1,53 @@
+﻿@model SHOPIFY1.Models.TaiKhoan
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="card shadow-lg p-4 border-0" style="width: 420px; border-radius: 15px;">
+        <h3 class="text-center mb-4 fw-bold text-warning"><i class="bi bi-person-plus"></i> Tạo tài khoản mới</h3>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger text-center">@ViewBag.Error</div>
+        }
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success text-center">@TempData["Success"]</div>
+        }
+
+        <form method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Họ và tên</label>
+                <input asp-for="HoTen" class="form-control" placeholder="Nguyễn Văn A" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Email</label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="example@gmail.com" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Số điện thoại</label>
+                <input asp-for="SoDienThoai" type="text" class="form-control" placeholder="0901234567" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Địa chỉ</label>
+                <input asp-for="DiaChi" class="form-control" placeholder="Ví dụ: 12 Nguyễn Trãi, Hà Nội" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Mật khẩu</label>
+                <input asp-for="MatKhau" type="password" class="form-control" placeholder="******" required />
+            </div>
+
+            <button type="submit" class="btn btn-warning w-100 fw-bold text-white">Đăng ký</button>
+
+            <div class="text-center mt-3">
+                <small>Đã có tài khoản? <a href="/Account/Login" class="text-warning fw-semibold text-decoration-none">Đăng nhập ngay</a></small>
+            </div>
+        </form>
+    </div>
+</div>  

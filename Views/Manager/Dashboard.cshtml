@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Bảng điều khiển Quản lý";
+    var managerName = Context.Session.GetString("HoTen") ?? "Quản lý";
+}
+
+<h2 class="fw-bold mb-4 text-primary"><i class="bi bi-speedometer"></i> Dashboard Quản lý</h2>
+<p class="text-secondary">Chào mừng trở lại, **@managerName**! Đây là trung tâm quản lý hoạt động hệ thống.</p>
+
+<hr />
+
+<div class="row mb-5">
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-primary shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-box-seam"></i> Tổng Sản phẩm</h5>
+                <p class="card-text fs-3 fw-bold">25</p>
+                <small>Sản phẩm đang hoạt động</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-success shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-cart-check"></i> Đơn hàng mới</h5>
+                <p class="card-text fs-3 fw-bold">7</p>
+                <small>Đang chờ xác nhận</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-warning shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-cash-stack"></i> Doanh thu (Hôm nay)</h5>
+                <p class="card-text fs-3 fw-bold">120.000.000₫</p>
+                <small>Ước tính</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="fw-bold mb-3 text-secondary">Truy cập nhanh</h3>
+<div class="row">
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-lg border-primary">
+            <div class="card-body">
+                <h5 class="card-title text-primary fw-bold"><i class="bi bi-box"></i> Quản lý Sản phẩm</h5>
+                <p class="card-text text-muted">Thêm, sửa, xóa, và quản lý tồn kho của tất cả sản phẩm.</p>
+                <a asp-action="Products" class="btn btn-primary mt-2">Truy cập</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-lg border-info">
+            <div class="card-body">
+                <h5 class="card-title text-info fw-bold"><i class="bi bi-tags"></i> Quản lý Danh mục</h5>
+                <p class="card-text text-muted">Quản lý và tổ chức các danh mục sản phẩm.</p>
+                <a asp-action="Categories" class="btn btn-info text-white mt-2">Truy cập</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-lg border-success">
+            <div class="card-body">
+                <h5 class="card-title text-success fw-bold"><i class="bi bi-receipt"></i> Quản lý Đơn hàng</h5>
+                <p class="card-text text-muted">Xác nhận, gán shipper và theo dõi trạng thái đơn hàng.</p>
+                <a href="/Employee/Index" class="btn btn-success mt-2">Truy cập</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-5">
+    <a href="/Account/Logout" class="btn btn-lg btn-danger">
+        <i class="bi bi-box-arrow-right"></i> Đăng xuất
+    </a>
+</div>
