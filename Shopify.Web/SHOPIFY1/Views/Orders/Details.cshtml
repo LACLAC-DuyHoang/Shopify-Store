@@ -1,0 +1,91 @@
+﻿@model SHOPIFY1.Models.DonHang
+
+@{
+    ViewData["Title"] = $"Chi tiết Đơn hàng #{Model.MaDh}";
+}
+
+<div class="container mt-4">
+    <h2 class="fw-bold mb-4 text-primary"><i class="bi bi-receipt"></i> Chi tiết Đơn hàng #@Model.MaDh</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white fw-bold">Thông tin Đơn hàng</div>
+                <div class="card-body">
+                    <p><strong>Ngày đặt:</strong> @Model.NgayDat?.ToString("HH:mm dd/MM/yyyy")</p>
+                    <p><strong>Địa chỉ giao:</strong> @Model.DiaChiGiao</p>
+                    <p><strong>Phương thức TT:</strong> @Model.PhuongThucThanhToan</p>
+                    <p>
+                        <strong>Trạng thái:</strong>
+                        @{
+                            var statusClass = Model.TrangThai switch
+                            {
+                                "Chờ xác nhận" => "bg-warning text-dark",
+                                "Đang giao hàng" => "bg-info",
+                                "Hoàn tất" => "bg-success",
+                                "Đã hủy" => "bg-danger",
+                                _ => "bg-secondary"
+                            };
+                        }
+                        <span class="badge @statusClass">
+                            @Model.TrangThai
+                        </span>
+                    </p>
+                    <p><strong>Shipper:</strong> @(Model.MaShipperNavigation?.HoTen ?? "Chưa gán")</p>
+                    <p><strong>SĐT Shipper:</strong> @(Model.MaShipperNavigation?.SoDienThoai ?? "N/A")</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4 h-100">
+                <div class="card-header bg-success text-white fw-bold">Thanh toán</div>
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <h3 class="text-center text-success">Tổng cộng</h3>
+                    <p class="text-center text-danger fw-bold fs-1">@string.Format("{0:N0} ₫", Model.TongTien)</p>
+                    <small class="text-center text-muted">Giá trị cuối cùng sau khi áp dụng khuyến mãi.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mt-4">
+        <div class="card-header bg-secondary text-white fw-bold">Chi tiết Sản phẩm đã đặt</div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.ChiTietDonHangs != null)
+                    {
+                        @foreach (var detail in Model.ChiTietDonHangs)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@detail.MaSp" class="text-decoration-none">
+                                        @detail.MaSpNavigation?.TenSp
+                                    </a>
+                                </td>
+                                <td>@detail.SoLuong</td>
+                                <td>@string.Format("{0:N0} ₫", detail.DonGia)</td>
+                                <td>@string.Format("{0:N0} ₫", detail.SoLuong * detail.DonGia)</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            ← Quay lại danh sách Đơn hàng
+        </a>
+    </div>
+</div>

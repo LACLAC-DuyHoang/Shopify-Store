@@ -1,0 +1,91 @@
+﻿@model SHOPIFY1.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = $"Sửa Tài khoản: {Model.HoTen}";
+    // Chỉ Staff mới có Roles để chọn
+    var isStaff = Model.MaVaiTro >= 2 && Model.MaVaiTro <= 4;
+    var roles = ViewBag.Roles as List<SHOPIFY1.Models.VaiTro>;
+}
+
+<h2 class="fw-bold mb-4 text-primary"><i class="bi bi-pencil-square"></i> Sửa Tài khoản @(isStaff ? "Nội bộ" : "Khách hàng")</h2>
+<p class="text-secondary">Cập nhật thông tin cơ bản cho tài khoản **@Model.HoTen** (Role: @Model.MaVaiTroNavigation?.TenVaiTro).</p>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="Edit" asp-route-id="@Model.MaTk" method="post">
+
+        <input type="hidden" asp-for="MaTk" />
+        <input type="hidden" asp-for="MatKhau" />
+        <input type="hidden" asp-for="NgayTao" />
+
+        <input type="hidden" asp-for="MaVaiTro" />
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="HoTen" class="form-label fw-semibold">Họ và Tên</label>
+                    <input asp-for="HoTen" class="form-control" required />
+                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label fw-semibold">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SoDienThoai" class="form-label fw-semibold">Số điện thoại</label>
+                    <input asp-for="SoDienThoai" type="text" class="form-control" />
+                    <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                @if (isStaff && roles != null)
+                {
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Thay đổi Vai trò</label>
+                        <select name="MaVaiTro" class="form-select" required>
+                            @foreach (var role in roles)
+                            {
+                                <option value="@role.MaVaiTro" selected="@(role.MaVaiTro == Model.MaVaiTro)">
+                                    @role.TenVaiTro
+                                </option>
+                            }
+                        </select>
+                        <span asp-validation-for="MaVaiTro" class="text-danger"></span>
+                    </div>
+                }
+
+                <div class="mb-3">
+                    <label asp-for="DiaChi" class="form-label fw-semibold">Địa chỉ</label>
+                    <input asp-for="DiaChi" class="form-control" />
+                    <span asp-validation-for="DiaChi" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TrangThai" class="form-label fw-semibold">Trạng thái tài khoản</label>
+                    <select asp-for="TrangThai" class="form-select">
+                        <option value="true" selected="@(Model.TrangThai == true)">Hoạt động (Kích hoạt)</option>
+                        <option value="false" selected="@(Model.TrangThai == false)">Vô hiệu hóa</option>
+                    </select>
+                    <span asp-validation-for="TrangThai" class="text-danger"></span>
+                    <small class="form-text text-muted">Trạng thái này quyết định người dùng có thể đăng nhập hay không.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 border-top pt-3">
+            <button type="submit" class="btn btn-warning me-2 text-white fw-bold"><i class="bi bi-arrow-clockwise"></i> Cập nhật Tài khoản</button>
+            <a asp-action="@(isStaff ? "Staffs" : "Index")" class="btn btn-outline-secondary">Hủy bỏ</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

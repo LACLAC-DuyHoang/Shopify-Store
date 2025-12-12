@@ -1,0 +1,154 @@
+﻿@model SHOPIFY1.Models.DonHang
+
+@{
+    ViewData["Title"] = $"Chi tiết Đơn hàng: #{Model.MaDh}";
+    // Lấy danh sách Shipper từ ViewBag
+    var shippers = ViewBag.Shippers as List<SHOPIFY1.Models.TaiKhoan>;
+
+    // 🌟 KHẮC PHỤC LỖI: Xây dựng URL Dashboard tĩnh 🌟
+    var currentRole = Context.Session.GetInt32("MaVaiTro");
+    var dashboardName = (currentRole == 2) ? "Manager" : "Employee";
+    var dashboardUrl = $"/{dashboardName}/Dashboard";
+}
+
+<h2 class="fw-bold mb-4 text-success"><i class="bi bi-receipt"></i> Chi tiết Đơn hàng #@Model.MaDh</h2>
+<p class="text-secondary">Kiểm tra thông tin và thực hiện xác nhận hoặc gán Shipper.</p>
+
+<hr />
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white fw-bold">Thông tin Khách hàng & Giao hàng</div>
+            <div class="card-body">
+                <p><strong>Khách hàng:</strong> @Model.MaKhNavigation?.HoTen</p>
+                <p><strong>Ngày đặt:</strong> @Model.NgayDat?.ToString("HH:mm dd/MM/yyyy")</p>
+                <p><strong>Phương thức TT:</strong> @Model.PhuongThucThanhToan</p>
+                <p><strong>Địa chỉ giao:</strong> @Model.DiaChiGiao</p>
+                <p><strong>Tổng tiền:</strong> <span class="text-danger fw-bold fs-5">@string.Format("{0:N0} ₫", Model.TongTien)</span></p>
+                <p>
+                    <strong>Trạng thái:</strong>
+                    <span class="badge @(Model.TrangThai == "Chờ xác nhận" ? "bg-warning text-dark" : (Model.TrangThai == "Đang giao hàng" ? "bg-info" : "bg-secondary"))">
+                        @Model.TrangThai
+                    </span>
+                </p>
+                <p>
+                    <strong>Shipper được gán:</strong>
+                    @(Model.MaShipperNavigation?.HoTen ?? "Chưa gán")
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-success text-white fw-bold">Hành động Xử lý</div>
+            <div class="card-body">
+                @if (Model.TrangThai == "Chờ xác nhận")
+                {
+                    <p class="fw-semibold">1. Xác nhận đơn hàng</p>
+                    <form asp-action="UpdateOrderStatus" method="post" class="d-inline me-2"
+                          onsubmit="return confirm('Xác nhận Đơn hàng #@Model.MaDh?');">
+                        <input type="hidden" name="maDh" value="@Model.MaDh" />
+                        <input type="hidden" name="trangThaiMoi" value="Xác nhận" />
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i> Xác nhận</button>
+                    </form>
+
+                    <form asp-action="UpdateOrderStatus" method="post" class="d-inline"
+                          onsubmit="return confirm('Bạn có chắc chắn muốn HỦY Đơn hàng #@Model.MaDh? Hành động này không thể hoàn tác.');">
+                        <input type="hidden" name="maDh" value="@Model.MaDh" />
+                        <input type="hidden" name="trangThaiMoi" value="Đã hủy" />
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-x-circle"></i> Hủy đơn</button>
+                    </form>
+
+                    <hr class="my-3" />
+                    <p class="fw-semibold">2. Gán Shipper (Sau khi xác nhận)</p>
+                    <p class="text-muted">Đơn hàng cần được xác nhận (trạng thái "Đang xử lý") trước khi gán Shipper.</p>
+                }
+                else if (Model.TrangThai == "Đang xử lý")
+                {
+                    <p class="fw-semibold">1. Gán Shipper</p>
+                    <form asp-action="AssignShipper" method="post">
+                        <input type="hidden" name="maDh" value="@Model.MaDh" />
+
+                        <div class="d-flex">
+                            <select name="maShipper" class="form-select me-2" required>
+                                <option value="">-- Chọn Shipper --</option>
+                                @if (shippers != null)
+                                {
+                                    @foreach (var shipper in shippers)
+                                    {
+                                        <option value="@shipper.MaTk">@shipper.HoTen</option>
+                                    }
+                                }
+                            </select>
+                            <button type="submit" class="btn btn-info text-white"><i class="bi bi-send"></i> Gán</button>
+                        </div>
+                    </form>
+
+                    <hr class="my-3" />
+                    <p class="fw-semibold">2. Hủy đơn hàng</p>
+                    <form asp-action="UpdateOrderStatus" method="post" class="d-inline"
+                          onsubmit="return confirm('Bạn có chắc chắn muốn HỦY Đơn hàng #@Model.MaDh?');">
+                        <input type="hidden" name="maDh" value="@Model.MaDh" />
+                        <input type="hidden" name="trangThaiMoi" value="Đã hủy" />
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-x-circle"></i> Hủy đơn</button>
+                    </form>
+                }
+                else
+                {
+                    <p class="alert alert-secondary">Đơn hàng đã ở trạng thái **@Model.TrangThai**. Không thể thay đổi.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm mt-4">
+    <div class="card-header bg-secondary text-white fw-bold">Chi tiết Sản phẩm</div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ChiTietDonHangs != null)
+                {
+                    @foreach (var detail in Model.ChiTietDonHangs)
+                    {
+                        <tr>
+                            <td>@detail.MaSpNavigation?.TenSp</td>
+                            <td>@detail.SoLuong</td>
+                            <td>@string.Format("{0:N0} ₫", detail.DonGia)</td>
+                            <td>@string.Format("{0:N0} ₫", detail.SoLuong * detail.DonGia)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="PendingOrders" class="btn btn-outline-secondary">
+        ← Quay lại danh sách Đơn hàng
+    </a>
+
+    <a href="@dashboardUrl" class="btn btn-outline-info ms-2">
+        ← Về Dashboard Chính
+    </a>
+</div>

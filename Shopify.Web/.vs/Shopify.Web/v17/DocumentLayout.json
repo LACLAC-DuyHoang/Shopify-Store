@@ -1,0 +1,185 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DoAnChuyenNghanh\\Shopify.Web\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|d:\\doanchuyennghanh\\shopify.web\\shopify1\\views\\employee\\orderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|solutionrelative:shopify1\\views\\employee\\orderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|d:\\doanchuyennghanh\\shopify.web\\shopify1\\views\\employee\\pendingorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|solutionrelative:shopify1\\views\\employee\\pendingorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|d:\\doanchuyennghanh\\shopify.web\\shopify1\\views\\employee\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|solutionrelative:shopify1\\views\\employee\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|d:\\doanchuyennghanh\\shopify.web\\shopify1\\views\\manager\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|solutionrelative:shopify1\\views\\manager\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|d:\\doanchuyennghanh\\shopify.web\\shopify1\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|solutionrelative:shopify1\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|d:\\doanchuyennghanh\\shopify.web\\shopify1\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|solutionrelative:shopify1\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|d:\\doanchuyennghanh\\shopify.web\\shopify1\\filters\\ordermanagerroleattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|solutionrelative:shopify1\\filters\\ordermanagerroleattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|d:\\doanchuyennghanh\\shopify.web\\shopify1\\filters\\employeeroleattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|solutionrelative:shopify1\\filters\\employeeroleattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|d:\\doanchuyennghanh\\shopify.web\\shopify1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E463A7A2-F660-499D-A683-8BAA7F96867D}|SHOPIFY1\\SHOPIFY1.csproj|solutionrelative:shopify1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderDetails.cshtml",
+              "DocumentMoniker": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Views\\Employee\\OrderDetails.cshtml",
+              "RelativeDocumentMoniker": "SHOPIFY1\\Views\\Employee\\OrderDetails.cshtml",
+              "ToolTip": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Views\\Employee\\OrderDetails.cshtml",
+              "RelativeToolTip": "SHOPIFY1\\Views\\Employee\\OrderDetails.cshtml",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAawJMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-10T16:39:58.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Views\\Employee\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "SHOPIFY1\\Views\\Employee\\Dashboard.cshtml",
+              "ToolTip": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Views\\Employee\\Dashboard.cshtml",
+              "RelativeToolTip": "SHOPIFY1\\Views\\Employee\\Dashboard.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAiwDsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-10T16:39:38.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PendingOrders.cshtml",
+              "DocumentMoniker": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Views\\Employee\\PendingOrders.cshtml",
+              "RelativeDocumentMoniker": "SHOPIFY1\\Views\\Employee\\PendingOrders.cshtml",
+              "ToolTip": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Views\\Employee\\PendingOrders.cshtml",
+              "RelativeToolTip": "SHOPIFY1\\Views\\Employee\\PendingOrders.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-10T16:36:52.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Views\\Manager\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "SHOPIFY1\\Views\\Manager\\Dashboard.cshtml",
+              "ToolTip": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Views\\Manager\\Dashboard.cshtml",
+              "RelativeToolTip": "SHOPIFY1\\Views\\Manager\\Dashboard.cshtml",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAGoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-10T16:33:26.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OrderManagerRoleAttribute.cs",
+              "DocumentMoniker": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Filters\\OrderManagerRoleAttribute.cs",
+              "RelativeDocumentMoniker": "SHOPIFY1\\Filters\\OrderManagerRoleAttribute.cs",
+              "ToolTip": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Filters\\OrderManagerRoleAttribute.cs",
+              "RelativeToolTip": "SHOPIFY1\\Filters\\OrderManagerRoleAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T16:31:54.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EmployeeRoleAttribute.cs",
+              "DocumentMoniker": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Filters\\EmployeeRoleAttribute.cs",
+              "RelativeDocumentMoniker": "SHOPIFY1\\Filters\\EmployeeRoleAttribute.cs",
+              "ToolTip": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Filters\\EmployeeRoleAttribute.cs",
+              "RelativeToolTip": "SHOPIFY1\\Filters\\EmployeeRoleAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T16:27:28.806Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Program.cs",
+              "RelativeDocumentMoniker": "SHOPIFY1\\Program.cs",
+              "ToolTip": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Program.cs",
+              "RelativeToolTip": "SHOPIFY1\\Program.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwCEAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T16:25:12.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "SHOPIFY1\\Controllers\\EmployeeController.cs",
+              "ToolTip": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "SHOPIFY1\\Controllers\\EmployeeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T16:24:17.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "SHOPIFY1\\Services\\EmployeeService.cs",
+              "ToolTip": "D:\\DoAnChuyenNghanh\\Shopify.Web\\SHOPIFY1\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "SHOPIFY1\\Services\\EmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T16:24:07.287Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

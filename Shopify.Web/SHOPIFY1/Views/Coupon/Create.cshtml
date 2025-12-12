@@ -1,0 +1,75 @@
+﻿@model SHOPIFY1.Models.MaGiamGium
+
+@{
+    ViewData["Title"] = "Thêm Mã Giảm Giá mới";
+}
+
+<h2 class="fw-bold mb-4 text-primary"><i class="bi bi-plus-circle"></i> Thêm Mã Giảm Giá</h2>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="MaCode" class="form-label fw-semibold">Mã Code</label>
+                    <input asp-for="MaCode" class="form-control text-uppercase" required maxlength="20" />
+                    <span asp-validation-for="MaCode" class="text-danger"></span>
+                    <small class="form-text text-muted">Ví dụ: SALE30, FREESHIP.</small>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PhanTramGiam" class="form-label fw-semibold">Phần trăm giảm (%)</label>
+                    <input asp-for="PhanTramGiam" type="number" class="form-control" required min="1" max="100" />
+                    <span asp-validation-for="PhanTramGiam" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="GiaTriToiDa" class="form-label fw-semibold">Giá trị giảm tối đa (₫)</label>
+                    <input asp-for="GiaTriToiDa" type="number" class="form-control" required min="0" />
+                    <span asp-validation-for="GiaTriToiDa" class="text-danger"></span>
+                    <small class="form-text text-muted">Nhập 0 nếu không giới hạn.</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="NgayBatDau" class="form-label fw-semibold">Ngày Bắt Đầu</label>
+                    <input asp-for="NgayBatDau" type="datetime-local" class="form-control" required />
+                    <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="NgayKetThuc" class="form-label fw-semibold">Ngày Kết Thúc</label>
+                    <input asp-for="NgayKetThuc" type="datetime-local" class="form-control" required />
+                    <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SoLanSuDungToiDa" class="form-label fw-semibold">Số lần sử dụng tối đa</label>
+                    <input asp-for="SoLanSuDungToiDa" type="number" class="form-control" required min="0" />
+                    <span asp-validation-for="SoLanSuDungToiDa" class="text-danger"></span>
+                    <small class="form-text text-muted">Nhập 0 nếu không giới hạn.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MoTa" class="form-label fw-semibold">Mô tả</label>
+            <textarea asp-for="MoTa" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="MoTa" class="text-danger"></span>
+        </div>
+
+        <div class="mt-4 border-top pt-3">
+            <button type="submit" class="btn btn-primary me-2"><i class="bi bi-save"></i> Thêm Mã Giảm Giá</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Hủy bỏ</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

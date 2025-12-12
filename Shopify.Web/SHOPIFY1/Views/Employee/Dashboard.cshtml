@@ -1,0 +1,60 @@
+﻿@* Dashboard cho MaVaiTro = 3 (Employee) / MaVaiTro = 2 (Manager) *@
+@{
+    ViewData["Title"] = "Bảng điều khiển Nhân viên";
+    var staffName = Context.Session.GetString("HoTen") ?? "Nhân viên";
+}
+
+<h2 class="fw-bold mb-4 text-success"><i class="bi bi-person-workspace"></i> Dashboard Quản lý Đơn hàng</h2>
+<p class="text-secondary">Chào mừng, **@staffName**! Đây là trung tâm quản lý và xử lý đơn hàng.</p>
+
+<hr />
+
+<div class="row mb-5">
+    <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card text-white bg-success shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-cart-check"></i> Đơn hàng chờ xử lý</h5>
+                <p class="card-text fs-3 fw-bold">Dữ liệu động...</p>
+                <small>Đơn hàng cần được xác nhận hoặc hủy</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card text-white bg-info shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-truck"></i> Đơn hàng đã gán Shipper</h5>
+                <p class="card-text fs-3 fw-bold">Dữ liệu động...</p>
+                <small>Đơn hàng đang giao hoặc đã giao</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="fw-bold mb-3 text-secondary">Công việc hàng ngày</h3>
+<div class="row">
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-lg border-success">
+            <div class="card-body">
+                <h5 class="card-title text-success fw-bold"><i class="bi bi-clock-history"></i> Xử lý đơn hàng mới</h5>
+                <p class="card-text text-muted">Kiểm tra, xác nhận và gán Shipper cho các đơn hàng mới.</p>
+                <a asp-action="PendingOrders" class="btn btn-success mt-2">Truy cập</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-lg border-primary">
+            <div class="card-body">
+                <h5 class="card-title text-primary fw-bold"><i class="bi bi-list-columns"></i> Xem tất cả Đơn hàng</h5>
+                <p class="card-text text-muted">Lọc và xem tất cả các đơn hàng theo trạng thái (TBD).</p>
+                <a href="#" class="btn btn-primary mt-2 disabled">Truy cập (TBD)</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-5">
+    <a href="/Account/Logout" class="btn btn-lg btn-danger">
+        <i class="bi bi-box-arrow-right"></i> Đăng xuất
+    </a>
+</div>

@@ -1,0 +1,87 @@
+﻿@model SHOPIFY1.Models.MaGiamGium
+
+@{
+    ViewData["Title"] = $"Sửa Mã Giảm Giá: {Model.MaCode}";
+    // Chuyển DateTime? về định dạng ISO 8601 cho input type="datetime-local"
+    string startDateTime = Model.NgayBatDau.ToString("yyyy-MM-ddTHH:mm");
+    string endDateTime = Model.NgayKetThuc.ToString("yyyy-MM-ddTHH:mm");
+}
+
+<h2 class="fw-bold mb-4 text-primary"><i class="bi bi-pencil-square"></i> Sửa Mã Giảm Giá</h2>
+<p class="text-secondary">Cập nhật thông tin Mã Code: **@Model.MaCode**.</p>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="Edit" asp-route-id="@Model.MaMgg" method="post">
+
+        <input type="hidden" asp-for="MaMgg" />
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="MaCode" class="form-label fw-semibold">Mã Code</label>
+                    <input asp-for="MaCode" class="form-control text-uppercase" required maxlength="20" />
+                    <span asp-validation-for="MaCode" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PhanTramGiam" class="form-label fw-semibold">Phần trăm giảm (%)</label>
+                    <input asp-for="PhanTramGiam" type="number" class="form-control" required min="1" max="100" />
+                    <span asp-validation-for="PhanTramGiam" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="GiaTriToiDa" class="form-label fw-semibold">Giá trị giảm tối đa (₫)</label>
+                    <input asp-for="GiaTriToiDa" type="number" class="form-control" required min="0" />
+                    <span asp-validation-for="GiaTriToiDa" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="NgayBatDau" class="form-label fw-semibold">Ngày Bắt Đầu</label>
+                    <input asp-for="NgayBatDau" type="datetime-local" value="@startDateTime" class="form-control" required />
+                    <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="NgayKetThuc" class="form-label fw-semibold">Ngày Kết Thúc</label>
+                    <input asp-for="NgayKetThuc" type="datetime-local" value="@endDateTime" class="form-control" required />
+                    <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SoLanSuDungToiDa" class="form-label fw-semibold">Số lần sử dụng tối đa</label>
+                    <input asp-for="SoLanSuDungToiDa" type="number" class="form-control" required min="0" />
+                    <span asp-validation-for="SoLanSuDungToiDa" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MoTa" class="form-label fw-semibold">Mô tả</label>
+            <textarea asp-for="MoTa" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="MoTa" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="TrangThai" class="form-label fw-semibold">Trạng thái</label>
+            <select asp-for="TrangThai" class="form-select">
+                <option value="Hoạt động">Hoạt động</option>
+                <option value="Vô hiệu hóa">Vô hiệu hóa</option>
+            </select>
+        </div>
+
+        <div class="mt-4 border-top pt-3">
+            <button type="submit" class="btn btn-warning me-2 text-white fw-bold"><i class="bi bi-arrow-clockwise"></i> Cập nhật Mã Giảm Giá</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Hủy bỏ</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

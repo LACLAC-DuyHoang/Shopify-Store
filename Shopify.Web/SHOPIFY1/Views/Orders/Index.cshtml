@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SHOPIFY1.Models.DonHang>
+
+@{
+    ViewData["Title"] = "Đơn hàng của tôi";
+}
+
+<div class="container mt-4">
+    <h2 class="fw-bold mb-4 text-primary"><i class="bi bi-receipt"></i> Đơn hàng của tôi</h2>
+    <p class="text-secondary">Theo dõi lịch sử và trạng thái các đơn hàng đã đặt.</p>
+
+    <hr />
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Mã ĐH</th>
+                        <th>Ngày đặt</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var statusClass = item.TrangThai switch
+                        {
+                            "Chờ xác nhận" => "bg-warning text-dark",
+                            "Đang giao hàng" => "bg-info",
+                            "Hoàn tất" => "bg-success",
+                            "Đã hủy" => "bg-danger",
+                            _ => "bg-secondary"
+                        };
+
+                        <tr>
+                            <td class="fw-bold">@item.MaDh</td>
+                            <td>@item.NgayDat?.ToString("HH:mm dd/MM/yyyy")</td>
+                            <td>@string.Format("{0:N0} ₫", item.TongTien)</td>
+                            <td>
+                                <span class="badge @statusClass">
+                                    @item.TrangThai
+                                </span>
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.MaDh" class="btn btn-sm btn-primary" title="Xem chi tiết">
+                                    <i class="bi bi-eye"></i> Chi tiết
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle"></i> Bạn chưa có đơn hàng nào.
+        </div>
+    }
+
+    <div class="mt-4">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+            ← Tiếp tục mua sắm
+        </a>
+    </div>
+</div>

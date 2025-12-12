@@ -1,0 +1,80 @@
+﻿@model IEnumerable<SHOPIFY1.Models.DonHang>
+
+@{
+    ViewData["Title"] = "Đơn hàng Chờ xử lý";
+    // Lấy MaVaiTro từ Session
+    var currentRole = Context.Session.GetInt32("MaVaiTro");
+
+    // Xác định tên Controller Dashboard
+    var dashboardName = (currentRole == 2) ? "Manager" : "Employee";
+
+    // 🌟 KHẮC PHỤC LỖI: Xây dựng URL Dashboard tĩnh 🌟
+    var dashboardUrl = $"/{dashboardName}/Dashboard";
+}
+
+<h2 class="fw-bold mb-4 text-success"><i class="bi bi-cart-check"></i> Đơn hàng Chờ xử lý</h2>
+<p class="text-secondary">Quản lý và xác nhận các đơn hàng mới từ khách hàng.</p>
+
+<hr />
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<div class="d-flex justify-content-end mb-3">
+    <a href="@dashboardUrl" class="btn btn-outline-secondary">
+        ← Về Dashboard
+    </a>
+</div>
+
+<div class="table-responsive">
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Mã ĐH</th>
+                    <th>Ngày đặt</th>
+                    <th>Khách hàng</th>
+                    <th>Tổng tiền</th>
+                    <th>Địa chỉ</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">@item.MaDh</td>
+                        <td>@item.NgayDat?.ToString("HH:mm dd/MM/yyyy")</td>
+                        <td>@item.MaKhNavigation?.HoTen</td>
+                        <td>@string.Format("{0:N0} ₫", item.TongTien)</td>
+                        <td>@item.DiaChiGiao</td>
+                        <td>
+                            <span class="badge @(item.TrangThai == "Chờ xác nhận" ? "bg-warning text-dark" : "bg-info")">
+                                @item.TrangThai
+                            </span>
+                        </td>
+                        <td>
+                            <a asp-action="OrderDetails" asp-route-id="@item.MaDh" class="btn btn-sm btn-primary me-2" title="Chi tiết & Xử lý">
+                                <i class="bi bi-eye"></i> Chi tiết
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle"></i> Hiện không có đơn hàng nào cần xác nhận.
+        </div>
+    }
+</div>

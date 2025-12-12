@@ -1,0 +1,78 @@
+﻿@model SHOPIFY1.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Thêm Tài khoản Nội bộ mới";
+    var roles = ViewBag.Roles as List<SHOPIFY1.Models.VaiTro>;
+}
+
+<h2 class="fw-bold mb-4 text-primary"><i class="bi bi-person-plus"></i> Thêm Tài khoản Nội bộ</h2>
+<p class="text-secondary">Tạo tài khoản mới cho Manager, Employee hoặc Shipper.</p>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="CreateStaff" method="post">
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="HoTen" class="form-label fw-semibold">Họ và Tên</label>
+                    <input asp-for="HoTen" class="form-control" required />
+                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label fw-semibold">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="MatKhau" class="form-label fw-semibold">Mật khẩu</label>
+                    <input asp-for="MatKhau" type="password" class="form-control" required />
+                    <span asp-validation-for="MatKhau" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label asp-for="MaVaiTro" class="form-label fw-semibold">Vai trò</label>
+                    <select asp-for="MaVaiTro" class="form-select" required>
+                        <option value="">-- Chọn Vai trò --</option>
+                        @if (roles != null)
+                        {
+                            @foreach (var role in roles)
+                            {
+                                <option value="@role.MaVaiTro">@role.TenVaiTro</option>
+                            }
+                        }
+                    </select>
+                    <span asp-validation-for="MaVaiTro" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SoDienThoai" class="form-label fw-semibold">Số điện thoại</label>
+                    <input asp-for="SoDienThoai" type="text" class="form-control" />
+                    <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DiaChi" class="form-label fw-semibold">Địa chỉ</label>
+                    <input asp-for="DiaChi" class="form-control" />
+                    <span asp-validation-for="DiaChi" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 border-top pt-3">
+            <button type="submit" class="btn btn-primary me-2"><i class="bi bi-save"></i> Thêm Tài khoản</button>
+            <a asp-action="Staffs" class="btn btn-outline-secondary">Hủy bỏ</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
